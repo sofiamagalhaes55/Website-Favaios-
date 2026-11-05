@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribuir | As Raízes de Favaios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topo">
+      <nav class="menu">
+
+    <div class="icon">
+      <a href="index.html" class="home-icon" title="Início">
+        <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+      </a>
+    </div>
+    <div class="menu-links">
+      
+      <a href="arquivo.html">Arquivo</a>
+      <a href="historias.html">Histórias</a>
+      <a href="dados.html">Dados</a>
+      <a href="contribuir.html">Contribuir</a>
+      <a href="sobre.html">Sobre</a>
+    </div>
+  </nav>
+    </header>
+
+  <section class="banner-interno">
+    <img src="img_header2.jpg" alt="Imagem da página Contribuir">
+  </section>
+
+
+  <main class="container pagina-contribuir">
+      <section class="intro-contribuir">
+        <h1>Contribuir</h1>
+        <p>
+          Ajude-nos a preservar e enriquecer a história de Favaios.
+        </p>
+        <p id="pp">
+          Partilhe <strong>fotografias</strong> antigas, <strong>imagens</strong>, <strong>vídeos</strong> que retratem a <strong>vida local</strong>, como pessoas, 
+          tradições, festas, ofícios, paisagens ou acontecimentos marcantes, bem como <strong>memórias 
+          e relatos</strong> que contribuam para valorizar o <strong>património da comunidade</strong>.
+        </p>
+        </section>
+      
+      <section class="bloco-formulario">
+        <section class="bloco-formulario">
+      <h2>Colabore na construção das memórias de Favaios</h2>
+
+      <form class="form-contribuir"
+          action="https://formsubmit.co/asraizesdefavaios@gmail.com"
+          method="POST"
+          enctype="multipart/form-data">
+
+          <input type="hidden" name="_next" value="obrigado.html">
+          <input type="hidden" name="_url" value="contribuir.html">
+          <input type="hidden" name="_subject" value="Nova contribuição - As Raízes de Favaios">
+          <input type="hidden" name="_captcha" value="false">
+
+          <label for="identificacao">Identificação do conteúdo</label>
+          <input type="text"
+              id="identificacao"
+              name="identificacao"
+              required>
+
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao"
+                  name="descricao"
+                  rows="7"
+                  required></textarea>
+
+          <label for="email">Email de contacto</label>
+          <input type="email"
+              id="email"
+              name="email"
+              required>
+
+          <label for="ficheiro">Anexar ficheiro</label>
+          <p class="ajuda-upload">
+          Se tiver vários ficheiros, pode enviá-los num único ficheiro ZIP.<br>
+          (formatos: PDF, JPG, PNG, MP3, MP4, ZIP — máx. 10 MB)
+          </p>
+
+          <input type="file" id="ficheiro" name="attachment" multiple>
+
+          <div class="acoes-formulario">
+            <button type="submit">ENVIAR</button>
+          </div>
+
+      </form>
+        </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-esq">
+      <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+    </div>
+
+    <div class="rodape-dir">
+      <h3>Contactos</h3>
+      <p>asraizesdefavaios@gmail.com</p>
+      <p>© ELACH/MHD 2026 | Universidade do Minho</p>
+    </div>
+  </footer>
+
+</body>
+</html>

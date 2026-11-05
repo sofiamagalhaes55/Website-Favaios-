@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<pagina n="1">
+    [1]
+
+    Continuação do anno de 1926
+    <registo id="29">29 
+    <nome>João Manoel </nome><apelido>Martins</apelido>
+
+    <ano class="1926">  No dia vinte e oito do mez de agosto do anno de mil nove / centos e vinte e seis</ano>, ás seis horas, na freguesia de São Domingos / de Favaios, Arciprestado de Alijó, Diocese de / Villa Real, falleceu João Manoel Martins, filho de / Manoel Augusto Martins e de Marianna Pinto Borges. / Foi sepultado catholicamente no cemiterio / parochial d'esta freguesia aos vinte e nove do mez / e anno corrente.
+    
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+
+    <registo id="30">30 
+        <nome>Manuel</nome><apelido>Lopes Figueiredo</apelido>
+
+        <ano>   No dia nove do mez de setembro do anno de mil nove / centos e vinte e seis</ano>, ás quatro horas, no logar do Prado, freguesia de São Domingos de Favaios, Arciprestado / de Alijó, Diocese de Villa Real, falleceu, sem / tempo de receber os Sacramentos, Manoel Lopes / Figueiredo, <Estado_civil class="casado">casado</Estado_civil> com Augusta d’Assumpção / Araujo, <Profissao class="proprietario">proprietario</Profissao>, <Idade class="70 anos">de setenta annos d’edade</Idade>, <Naturalidade class="Favaios"><Residencia class="Favaios">natural / e residente n'esta freguesia</Residencia></Naturalidade>, filho legitimo / de Luiz Lopes Pereira e de Thereza de Jesus / Figueiredo. Foi sepultado catholicamente / no cemiterio d'esta freguesia aos 10 dias do / mez e anno corrente.
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+
+    <registo id="31">31 
+        <nome>Fernando</nome><apelido>Alberto</apelido>
+        
+        <ano class="1926">  No dia dezesete do mez de setembro do anno de mil / nove centos e vinte e seis</ano>, ás cinco horas, no logar / de Soutelinho, freguesia de São Domingos / de Favaios, Arciprestado de Alijó, Diocese de / Villa Real, falleceu Fernando Alberto, <Idade class="7 meses">de sete / mezes d’edade,</Idade><Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente nesta / freguesia</Residencia></Naturalidade>, filho legitimo de Antonio Joaquim / Pires e de Palmira dos Anjos Furtado. / Foi sepultado catholicamente no cemiterio d'esta freguesia aos 18 do mez e anno corrente.
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+
+    <registo id="32">32 
+        <nome>Antonio</nome><apelido>Correa</apelido>
+
+        <ano class="1926">  No dia tres do mez de outubro do anno de mil nove / centos e vinte e seis</ano>, ás quatro horas, n’uma casa / da rua do Fundo, freguesia de São Domingos de / Favaios, Arciprestado de Alijó, Diocese de Villa / Real, falleceu, tendo recebido os Sacramentos da / Santa Egreja, Antonio Correa, <Profissao class="jornaleiro">jornaleiro</Profissao>, <Idade class="56 anos">de cincoenta / e seis annos d’edade</Idade>, <Estado_civil class ="casado">casado</Estado_civil> com Guilhermina / Igrejas, <Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente n'esta freguesia</Residencia></Naturalidade>, / filho legitimo de Jose Correa e de Anna Moutinho. / Foi sepultado catholicamente no cemiterio / d'esta freguesia aos 4 do mez e anno corrente.
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+</pagina>

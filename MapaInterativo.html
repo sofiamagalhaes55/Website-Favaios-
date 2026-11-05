@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Colorido — Favaios</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* Base do Mapa */
+        #map {
+            height: 550px;
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            border-radius: 12px;
+            border: 2px solid #8B2E2E; /* Moldura na cor do seu tema */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        /* Pin Estilizado (Figma Style) */
+        .custom-pin-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pin-vinho {
+            width: 18px;
+            height: 18px;
+            background-color: #8B2E2E;
+            border: 2px solid white;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Animação ao passar o rato */
+        .custom-pin-container:hover .pin-vinho {
+            transform: rotate(-45deg) scale(1.5) translateY(-8px) translateX(8px);
+            background-color: #222;
+        }
+
+        /* Estilo do Balão de Informação */
+        .leaflet-popup-content-wrapper {
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .leaflet-popup-content h4 {
+            color: #8B2E2E;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. Inicializar o mapa em Favaios
+        var map = L.map('map').setView([41.270, -7.502], 16);
+
+        // 2. CAMADA COLORIDA: CartoDB Voyager
+        // Esta versão é vibrante e não bloqueia o acesso local (file://)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // 3. Ícone Personalizado
+        var customIcon = L.divIcon({
+            className: 'custom-pin-container',
+            html: '<div class="pin-vinho"></div>',
+            iconSize: [30, 30],
+            iconAnchor: [15, 30],
+            popupAnchor: [0, -30]
+        });
+
+        // 4. Marcadores de Exemplo
+        // 1. Lista de locais com as coordenadas e contagem de óbitos
+const locais = [
+    { 
+        nome: "Soutelinho", 
+        coords: [41.271, -7.515], 
+        obitos: 21 // Número de óbitos que viste para este local
+    },
+    { 
+        nome: "Além da Fonte", 
+        coords: [41.269, -7.505], 
+        obitos: 20 // Substitui pelo número real
+    },
+    { 
+        nome: "Outeiro", 
+        coords: [41.273, -7.500], 
+        obitos: 17 // Substitui pelo número real
+    }
+];
+
+// 2. Adicionar os Marcadores ao Mapa
+locais.forEach(l => {
+    L.marker(l.coords, { icon: customIcon })
+        .addTo(map)
+        .bindPopup(`
+            <div style="text-align:center;">
+                <h4 style="margin:0; color:#8B2E2E;">${l.nome}</h4>
+                <p style="margin:5px 0;"><strong>${l.obitos} óbitos</strong> registados</p>
+                <a href="arquivo.html?lugar=${l.nome.toLowerCase()}" style="font-weight:bold; color:#333; text-decoration:none; border-bottom:1px solid #8B2E2E;">Ver no Arquivo</a>
+            </div>
+        `);
+});
+    </script>
+
+</body>
+</html>

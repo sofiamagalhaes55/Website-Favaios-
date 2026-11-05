@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo | As Raízes de Favaios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topo">
+        <nav class="menu">
+
+    <div class="icon">
+      <a href="index.html" class="home-icon" title="Início">
+        <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+      </a>
+    </div>
+    <div class="menu-links">
+    
+        <a href="arquivo.html">Arquivo</a>
+        <a href="historias.html">Histórias</a>
+        <a href="dados.html">Dados</a>
+        <a href="contribuir.html">Contribuir</a>
+        <a href="sobre.html">Sobre</a>
+    </div>
+    </nav>
+    </header>
+
+    <section class="banner-interno">
+        <img src="img_header1.jpg" alt="Imagem da página Arquivo">
+    </section>
+
+  <!-- ── 3-column grid ── -->
+  <div class="arquivo-grid">
+
+    <!-- SIDEBAR 1 — seta esquerda -->
+    <aside class="arquivo-sidebar arquivo-sidebar--left">
+      <button class="page-arrow" id="prevBtn" onclick="changePage(-1)" disabled>&#9664;</button>
+    </aside>
+
+    <!-- ARTICLE — conteúdo principal -->
+    <main class="pagina-arquivo">
+      <h1>Registos paroquiais de 1926 a 1940</h1>
+
+      <!-- Search bar -->
+      <div class="search-section">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Pesquisa geral, por nome, apelido, lugar...">
+          <button class="search-icon" id="searchBtn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="6"></circle>
+              <line x1="16" y1="16" x2="21" y2="21"></line>
+            </svg>
+          </button>
+        </div>
+        <button class="filter-btn" id="toggleFiltersBtn">Filtros <span id="filterArrow">▶</span></button>
+      </div>
+
+      <!-- Year selector -->
+      <div class="year-selector" id="yearSelector">
+        Ano:
+        <a class="year-link" data-year="all">Todos</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1926">1926</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1928">1928</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1930">1930</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1932">1932</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1934">1934</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1936">1936</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1938">1938</a>
+        <span class="year-sep">|</span>
+        <a class="year-link" data-year="1940">1940</a>
+      </div>
+
+      <!-- Active filter tags -->
+      <div class="active-filters" id="activeFilters"></div>
+
+      <!-- Results count -->
+      <div class="results-info" id="resultsInfo"></div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" id="tabTranscricao">Transcrição</button>
+        <button class="tab-btn" id="tabOriginal">Original</button>
+      </div>
+
+      <!-- Transcrição view -->
+      <div class="transcription-box" id="viewTranscricao">
+        <div class="page-indicator" id="pageIndicator"></div>
+        <div class="entry" id="entryContainer">
+          <div style="color:#999; padding:40px; text-align:center;">A carregar registos…</div>
+        </div>
+      </div>
+
+      <!-- Original (fólio) view -->
+      <div class="transcription-box folio-box" id="viewOriginal" style="display:none;">
+        <div class="page-indicator" id="pageIndicatorOriginal"></div>
+        <div id="folioContainer">
+          <div style="color:#999; padding:40px; text-align:center;">Sem imagem disponível para esta folha.</div>
+        </div>
+      </div>
+    </main>
+
+    <!-- SIDEBAR 2 — seta direita + painel de filtros -->
+    <aside class="arquivo-sidebar arquivo-sidebar--right">
+      <button class="page-arrow" id="nextBtn" onclick="changePage(1)">&#9654;</button>
+
+      <div class="filter-popup" id="filterPopup">
+        <div class="filter-header">
+          <button class="mini-btn" id="applyFiltersBtn">✓ Aplicar</button>
+          <button class="mini-btn" id="clearFiltersBtn">✕ Limpar</button>
+        </div>
+
+        <div class="filter-group">
+          <label>Idade (anos)</label>
+          <div class="idade-range">
+            <input type="number" id="idadeMin" placeholder="Mín" min="0" max="150">
+            <span>—</span>
+            <input type="number" id="idadeMax" placeholder="Máx" min="0" max="150">
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Estado civil</label>
+          <select id="filterEstadoCivil">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Profissão</label>
+          <select id="filterProfissao">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Naturalidade</label>
+          <select id="filterNaturalidade">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label>Residência</label>
+          <select id="filterResidencia">
+            <option value="">Todas</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /arquivo-grid -->
+
+  <footer class="rodape">
+    <div class="rodape-esq">
+      <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+    </div>
+    <div class="rodape-dir">
+      <h3>Contactos</h3>
+      <p>asraizesdefavaios@gmail.com</p>
+      <p>© ELACH/MHD 2026 | Universidade do Minho</p>
+    </div>
+  </footer>
+
+<script>
+/* =========================================================
+   DATA LAYER – load and parse all XML pages
+   ========================================================= */
+
+const PAGE_SEQUENCE = ["1", "1v", "2"];
+let ALL_RECORDS = [];
+let currentIndex = 0;
+
+const filters = {
+    text:          "",
+    year:          "all",
+    idadeMin:      null,
+    idadeMax:      null,
+    estadoCivil:   "",
+    profissao:     "",
+    naturalidade:  "",
+    residencia:    ""
+};
+
+function parseIdade(str) {
+    if (!str) return null;
+    str = str.trim().toLowerCase();
+    const anos  = str.match(/(\d+)\s*ano/);
+    const meses = str.match(/(\d+)\s*mes/);
+    const dias  = str.match(/(\d+)\s*dia/);
+    if (anos)  return parseInt(anos[1]);
+    if (meses) return parseFloat((parseInt(meses[1]) / 12).toFixed(2));
+    if (dias)  return parseFloat((parseInt(dias[1]) / 365).toFixed(3));
+    return null;
+}
+
+function getTagText(node, tagName) {
+    const variants = [tagName, tagName.toLowerCase(), tagName.toUpperCase()];
+    for (const v of variants) {
+        const el = node.querySelector(v);
+        if (el) return el.textContent.trim();
+    }
+    return "";
+}
+
+function getTagAttr(node, tagName) {
+    const variants = [tagName, tagName.toLowerCase()];
+    for (const v of variants) {
+        const el = node.querySelector(v);
+        if (el) {
+            return (el.getAttribute("class") || el.getAttribute(v.toLowerCase()) || "").trim();
+        }
+    }
+    return "";
+}
+
+function parseRegisto(node, pageName) {
+    const id          = node.getAttribute("id") || "?";
+    const nome        = getTagText(node, "nome");
+    const apelido     = getTagText(node, "apelido");
+    const anoEl       = node.querySelector("ano");
+    const ano         = anoEl ? (anoEl.getAttribute("class") || "").trim() : "";
+    const estadoCivil  = getTagAttr(node, "Estado_civil");
+    const profissao    = getTagAttr(node, "Profissao");
+    const naturalidade = getTagAttr(node, "Naturalidade");
+    const residencia   = getTagAttr(node, "Residencia");
+    let idadeStr = "";
+    const idadeEl = node.querySelector("Idade") || node.querySelector("idade");
+    if (idadeEl) {
+        idadeStr = (idadeEl.getAttribute("class") || idadeEl.getAttribute("idade") || "").trim();
+    }
+    const idadeNum = parseIdade(idadeStr);
+    const fullText = node.textContent;
+    return { id, nome, apelido, ano, estadoCivil, profissao, naturalidade, residencia, idadeStr, idadeNum, fullText, pageName, node };
+}
+
+async function loadAllPages() {
+    for (const page of PAGE_SEQUENCE) {
+        try {
+            const resp = await fetch(`pagina_${page}.xml`);
+            if (!resp.ok) continue;
+            const text = await resp.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, "text/xml");
+            if (doc.querySelector("parsererror")) continue;
+            const registos = doc.getElementsByTagName("registo");
+            for (const r of registos) {
+                ALL_RECORDS.push(parseRegisto(r, page));
+            }
+        } catch (e) {
+            console.warn(`Erro ao carregar pagina_${page}.xml:`, e);
+        }
+    }
+    populateFilterDropdowns();
+    renderCurrentView();
+}
+
+function populateFilterDropdowns() {
+    const ec  = new Set();
+    const pr  = new Set();
+    const nat = new Set();
+    const res = new Set();
+    ALL_RECORDS.forEach(r => {
+        if (r.estadoCivil)  ec.add(capitalize(r.estadoCivil));
+        if (r.profissao)    pr.add(capitalize(r.profissao));
+        if (r.naturalidade) nat.add(capitalize(r.naturalidade));
+        if (r.residencia)   res.add(capitalize(r.residencia));
+    });
+    fillSelect("filterEstadoCivil", [...ec].sort());
+    fillSelect("filterProfissao",   [...pr].sort());
+    fillSelect("filterNaturalidade",[...nat].sort());
+    fillSelect("filterResidencia",  [...res].sort());
+}
+
+function capitalize(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
+function fillSelect(id, values) {
+    const sel = document.getElementById(id);
+    values.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v.toLowerCase();
+        opt.textContent = v;
+        sel.appendChild(opt);
+    });
+}
+
+/* =========================================================
+   FILTERING
+   ========================================================= */
+
+function isSearchActive() {
+    return filters.text || filters.year !== "all" ||
+           filters.idadeMin !== null || filters.idadeMax !== null ||
+           filters.estadoCivil || filters.profissao ||
+           filters.naturalidade || filters.residencia;
+}
+
+function applyFilters(records) {
+    return records.filter(r => {
+        if (filters.text) {
+            const q = filters.text.toLowerCase();
+            if (!r.fullText.toLowerCase().includes(q)) return false;
+        }
+        if (filters.year && filters.year !== "all") {
+            if (r.ano !== filters.year) return false;
+        }
+        if (filters.idadeMin !== null && r.idadeNum !== null) {
+            if (r.idadeNum < filters.idadeMin) return false;
+        }
+        if (filters.idadeMax !== null && r.idadeNum !== null) {
+            if (r.idadeNum > filters.idadeMax) return false;
+        }
+        if (filters.estadoCivil) {
+            if (!r.estadoCivil.toLowerCase().includes(filters.estadoCivil)) return false;
+        }
+        if (filters.profissao) {
+            if (!r.profissao.toLowerCase().includes(filters.profissao)) return false;
+        }
+        if (filters.naturalidade) {
+            if (!r.naturalidade.toLowerCase().includes(filters.naturalidade)) return false;
+        }
+        if (filters.residencia) {
+            if (!r.residencia.toLowerCase().includes(filters.residencia)) return false;
+        }
+        return true;
+    });
+}
+
+/* =========================================================
+   RENDERING
+   ========================================================= */
+
+function renderCurrentView() {
+    if (isSearchActive()) {
+        renderSearchResults();
+    } else {
+        renderPageView();
+    }
+    updateResultsInfo();
+    updateActiveFilterTags();
+}
+
+function renderPageView() {
+    document.body.classList.remove("search-mode");
+    document.getElementById("prevBtn").style.display = "";
+    document.getElementById("nextBtn").style.display = "";
+
+    const pageName = PAGE_SEQUENCE[currentIndex];
+    const pageRecords = ALL_RECORDS.filter(r => r.pageName === pageName);
+
+    document.getElementById("pageIndicator").innerText = `Folha ${pageName}`;
+    document.getElementById("prevBtn").disabled = (currentIndex === 0);
+    document.getElementById("nextBtn").disabled = (currentIndex === PAGE_SEQUENCE.length - 1);
+
+    renderRecords(pageRecords, "");
+}
+
+function renderSearchResults() {
+    document.body.classList.add("search-mode");
+    const matched = applyFilters(ALL_RECORDS);
+    renderRecords(matched, filters.text);
+}
+
+function renderRecords(records, highlight) {
+    const container = document.getElementById("entryContainer");
+    if (records.length === 0) {
+        container.innerHTML = `
+            <div class="no-results">
+                <div class="icon">🔍</div>
+                <p>Nenhum registo encontrado com estes critérios.</p>
+            </div>`;
+        return;
+    }
+    container.innerHTML = records.map(r => renderRecord(r, highlight)).join("");
+}
+
+function renderRecord(r, highlight) {
+    let transcricaoHTML = "";
+    const children = r.node.childNodes;
+    let passedId = false;
+
+    children.forEach(node => {
+        const name = node.nodeName.toLowerCase();
+        if (name === "nome" || name === "apelido") return;
+        if (!passedId && node.nodeType === Node.TEXT_NODE) {
+            if (node.textContent.trim() === r.id) return;
+        }
+        passedId = true;
+        if (node.nodeType === Node.ELEMENT_NODE) {
+            transcricaoHTML += `<span class="tag-${name}">${node.innerHTML}</span>`;
+        } else {
+            transcricaoHTML += node.textContent;
+        }
+    });
+
+    if (highlight) {
+        transcricaoHTML = highlightText(transcricaoHTML, highlight);
+    }
+
+    const nameDisplay = highlight
+        ? highlightText(`${r.nome} ${r.apelido}`, highlight)
+        : `${r.nome} ${r.apelido}`;
+
+    return `
+        <div class="registo-entry">
+            <div class="registo-header">
+                <span class="registo-id">#${r.id}</span>
+                <h2 class="registo-nome">${nameDisplay}</h2>
+            </div>
+            <div class="transcricao-texto">
+                ${transcricaoHTML}
+            </div>
+        </div>`;
+}
+
+function highlightText(html, term) {
+    if (!term) return html;
+    const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return html.replace(new RegExp(`(${escaped})`, "gi"), "<mark>$1</mark>");
+}
+
+function updateResultsInfo() {
+    const infoEl = document.getElementById("resultsInfo");
+    if (!isSearchActive()) { infoEl.innerHTML = ""; return; }
+    const count = applyFilters(ALL_RECORDS).length;
+    const total = ALL_RECORDS.length;
+    infoEl.innerHTML = `<strong>${count}</strong> registo${count !== 1 ? "s" : ""} encontrado${count !== 1 ? "s" : ""} de ${total} no total.`;
+}
+
+function updateActiveFilterTags() {
+    const container = document.getElementById("activeFilters");
+    container.innerHTML = "";
+    const add = (label, clearFn) => {
+        const tag = document.createElement("span");
+        tag.className = "filter-tag";
+        tag.innerHTML = `${label} <span class="remove-tag">✕</span>`;
+        tag.querySelector(".remove-tag").addEventListener("click", clearFn);
+        container.appendChild(tag);
+    };
+    if (filters.text)           add(`"${filters.text}"`, () => { filters.text = ""; document.getElementById("searchInput").value = ""; renderCurrentView(); });
+    if (filters.year !== "all") add(`Ano: ${filters.year}`, () => { filters.year = "all"; setActiveYear("all"); renderCurrentView(); });
+    if (filters.idadeMin !== null) add(`Idade ≥ ${filters.idadeMin}`, () => { filters.idadeMin = null; document.getElementById("idadeMin").value = ""; renderCurrentView(); });
+    if (filters.idadeMax !== null) add(`Idade ≤ ${filters.idadeMax}`, () => { filters.idadeMax = null; document.getElementById("idadeMax").value = ""; renderCurrentView(); });
+    if (filters.estadoCivil)    add(`Estado: ${capitalize(filters.estadoCivil)}`, () => { filters.estadoCivil = ""; document.getElementById("filterEstadoCivil").value = ""; renderCurrentView(); });
+    if (filters.profissao)      add(`Profissão: ${capitalize(filters.profissao)}`, () => { filters.profissao = ""; document.getElementById("filterProfissao").value = ""; renderCurrentView(); });
+    if (filters.naturalidade)   add(`Naturalidade: ${capitalize(filters.naturalidade)}`, () => { filters.naturalidade = ""; document.getElementById("filterNaturalidade").value = ""; renderCurrentView(); });
+    if (filters.residencia)     add(`Residência: ${capitalize(filters.residencia)}`, () => { filters.residencia = ""; document.getElementById("filterResidencia").value = ""; renderCurrentView(); });
+}
+
+/* =========================================================
+NAVIGATION
+   ========================================================= */
+
+function changePage(delta) {
+    currentIndex = Math.max(0, Math.min(PAGE_SEQUENCE.length - 1, currentIndex + delta));
+    renderCurrentView();
+    if (activeTab === "original") renderFolio();
+}
+
+/* =========================================================
+TAB SWITCHING + FOLIO IMAGES
+   ========================================================= */
+
+// Map each page name to its folio image filename (add more as needed)
+const FOLIO_IMAGES = {
+    "1":  "Fólio_14.jpg",
+    "1v": "Fólio_14v.jpg"
+    // "2": "Fólio_15.jpg"  ← add when available
+};
+
+let activeTab = "transcricao"; // "transcricao" | "original"
+
+function setTab(tab) {
+    activeTab = tab;
+
+    const btnT = document.getElementById("tabTranscricao");
+    const btnO = document.getElementById("tabOriginal");
+    const viewT = document.getElementById("viewTranscricao");
+    const viewO = document.getElementById("viewOriginal");
+
+    btnT.classList.toggle("active", tab === "transcricao");
+    btnO.classList.toggle("active", tab === "original");
+
+    viewT.style.display = tab === "transcricao" ? "" : "none";
+    viewO.style.display = tab === "original"    ? "" : "none";
+
+    if (tab === "original") renderFolio();
+}
+
+function renderFolio() {
+    const pageName = PAGE_SEQUENCE[currentIndex];
+    const img = FOLIO_IMAGES[pageName];
+    const container = document.getElementById("folioContainer");
+    const indicator = document.getElementById("pageIndicatorOriginal");
+
+    indicator.innerText = `Folha ${pageName}`;
+
+    if (img) {
+        container.innerHTML = `
+            <img src="${img}"
+                 alt="Fólio original — folha ${pageName}"
+                 style="width:100%; max-width:720px; display:block; margin:0 auto;
+                        border-radius:4px; box-shadow:0 2px 12px rgba(0,0,0,0.15);">`;
+    } else {
+        container.innerHTML = `<div style="color:#999; padding:40px; text-align:center;">
+            Sem imagem disponível para a folha ${pageName}.
+        </div>`;
+    }
+}
+
+document.getElementById("tabTranscricao").addEventListener("click", () => setTab("transcricao"));
+document.getElementById("tabOriginal").addEventListener("click",    () => setTab("original"));
+
+
+
+let searchDebounce;
+document.getElementById("searchInput").addEventListener("input", e => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => {
+        filters.text = e.target.value.trim();
+        renderCurrentView();
+    }, 300);
+});
+document.getElementById("searchBtn").addEventListener("click", () => {
+    filters.text = document.getElementById("searchInput").value.trim();
+    renderCurrentView();
+});
+
+document.getElementById("yearSelector").addEventListener("click", e => {
+    const link = e.target.closest(".year-link");
+    if (!link) return;
+    const year = link.dataset.year;
+    filters.year = year;
+    setActiveYear(year);
+    renderCurrentView();
+});
+
+function setActiveYear(year) {
+    document.querySelectorAll(".year-link").forEach(l => l.classList.toggle("active", l.dataset.year === year));
+}
+
+document.getElementById("toggleFiltersBtn").addEventListener("click", () => {
+    const popup = document.getElementById("filterPopup");
+    popup.classList.toggle("open");
+    document.getElementById("filterArrow").textContent = popup.classList.contains("open") ? "▼" : "▶";
+});
+
+document.getElementById("applyFiltersBtn").addEventListener("click", () => {
+    const idadeMinVal = document.getElementById("idadeMin").value;
+    const idadeMaxVal = document.getElementById("idadeMax").value;
+    filters.idadeMin      = idadeMinVal !== "" ? parseFloat(idadeMinVal) : null;
+    filters.idadeMax      = idadeMaxVal !== "" ? parseFloat(idadeMaxVal) : null;
+    filters.estadoCivil   = document.getElementById("filterEstadoCivil").value;
+    filters.profissao     = document.getElementById("filterProfissao").value;
+    filters.naturalidade  = document.getElementById("filterNaturalidade").value;
+    filters.residencia    = document.getElementById("filterResidencia").value;
+    document.getElementById("filterPopup").classList.remove("open");
+    document.getElementById("filterArrow").textContent = "▶";
+    renderCurrentView();
+});
+
+document.getElementById("clearFiltersBtn").addEventListener("click", () => {
+    filters.idadeMin = filters.idadeMax = null;
+    filters.estadoCivil = filters.profissao = filters.naturalidade = filters.residencia = "";
+    document.getElementById("idadeMin").value = "";
+    document.getElementById("idadeMax").value = "";
+    document.getElementById("filterEstadoCivil").value = "";
+    document.getElementById("filterProfissao").value = "";
+    document.getElementById("filterNaturalidade").value = "";
+    document.getElementById("filterResidencia").value = "";
+    renderCurrentView();
+});
+
+window.onload = () => {
+    loadAllPages();
+    // Abrir o painel de filtros por defeito
+    document.getElementById("filterPopup").classList.add("open");
+    document.getElementById("filterArrow").textContent = "▼";
+};
+</script>
+</body>
+</html>

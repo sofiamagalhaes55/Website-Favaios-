@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>As Raízes de Favaios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+  <nav class="menu">
+
+    <div class="icon">
+      <a href="index.html" class="home-icon" title="Início">
+        <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+      </a>
+    </div>
+    <div id="menu">
+      <div class="menu-links">
+        <a href="arquivo.html">Arquivo</a>
+        <a href="historias.html">Histórias</a>
+        <a href="dados.html">Dados</a>
+        <a href="contribuir.html">Contribuir</a>
+        <a href="sobre.html">Sobre</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <section class="hero">
+    <img src="img_home.jpg" alt="Imagem principal de Favaios (gerada com IA)">
+    <div class="hero-overlay">
+      <h1>As Raízes de Favaios</h1>
+      <p>Histórias e memórias da comunidade de Favaios entre 1926 e 1940</p>
+
+      
+    </div>
+  </section>
+
+  <main>
+    <section class="destaques">
+      <h2>Em destaque</h2>
+
+      <div class="cards">
+        <article class="card" id="featured1">
+          <a href="historias.html">
+          <img src="img_featured1.jpg" alt="Famílias e histórias">
+          <p>Descubra pequenas histórias sobre pessoas, famílias, estilo de vida da vila de Favaios.</p>
+          </a>
+        </article>
+
+        <article class="card" id="featured2">
+          <a href="dados.html">
+          <img src="img_graph1.jpg" alt="Demografia">
+          <p>Explore dados demográficos do início do século XX, através de representações gráficas.</p>
+          </a>
+        </article>
+
+        <article class="card" id="featured3">
+          <a href="arquivo.html">
+          <img src="img_featured3.jpg" alt="Registos digitalizados">
+          <p>Consulte os registos digitalizados e as respetivas transcrições.</p>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="citacao">
+      <p>
+        Espaço dedicado às pessoas que deram vida à comunidade de Favaios — homens, mulheres e crianças
+        cujas memórias ajudam a compreender a vila no início do século XX.
+      </p>
+    </section>
+
+    <section class="mapa">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+      <div id="map"></div>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script>
+        var map = L.map('map').setView([41.270, -7.502], 16);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; OpenStreetMap',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        var customIcon = L.divIcon({
+            className: 'custom-pin-container',
+            html: '<div class="pin-vinho"></div>',
+            iconSize: [30, 30],
+            iconAnchor: [15, 30],
+            popupAnchor: [0, -30]
+        });
+
+        const locais = [
+            { nome: "Soutelinho",    coords: [41.271, -7.515], obitos: 21 },
+            { nome: "Além da Fonte", coords: [41.269, -7.505], obitos: 20 },
+            { nome: "Outeiro",       coords: [41.273, -7.500], obitos: 17 }
+        ];
+
+        locais.forEach(l => {
+            L.marker(l.coords, { icon: customIcon })
+                .addTo(map)
+                .bindPopup(`
+                    <div style="text-align:center;">
+                        <h4 style="margin:0; color:#8B2E2E;">${l.nome}</h4>
+                        <p style="margin:5px 0;"><strong>${l.obitos} óbitos</strong> registados</p>
+                        <a href="arquivo.html?lugar=${l.nome.toLowerCase()}" style="font-weight:bold; color:#333; text-decoration:none; border-bottom:1px solid #8B2E2E;">Ver no Arquivo</a>
+                    </div>
+                `);
+        });
+      </script>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-esq">
+      <img src="img_logo.png" alt="Logo As Raízes de Favaios">
+    </div>
+
+    <div class="rodape-dir">
+      <h3>Contactos</h3>
+      <p>asraizesdefavaios@gmail.com</p>
+      <p>© ELACH/MHD 2026 | Universidade do Minho</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<pagina n="2">
+<registo id="38">38 
+        <nome>Constantino</nome><apelido>Pires</apelido>
+
+        <ano class="1926">  No dia vinte e tres do mez de novembro do anno de / mil nove centos e vinte e seis</ano>, ás tres horas, n’uma casa / da rua Direita, freguesia de São Domingos de Favaios, / Arciprestado de Alijó, Diocese de Villa Real, falleceu, / tendo recebido o Sacramento da Extrema Uncção, Constantino / Pires, <Estado_civil class="solteiro">solteiro</Estado_civil>, <Profissao class ="proprietario">proprietario</Profissao>, <Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente / n’esta freguesia</Residencia></Naturalidade>, filho legitimo de Manoel / Lopes Pires e de Anna Rosa. Foi sepultado catholicamente / no cemiterio d’esta freguesia aos 24 / do mez e anno corrente. <Idade class="77 anos">Tinha setenta e sete anos.</Idade> 
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+    </registo>
+
+    <registo id="39">39 
+        <nome>Maria</nome><apelido>Alice</apelido>
+
+        <ano class="1926">  No dia dezeseis do mez de dezembro do anno de / mil nove centos e vinte e seis</ano>, ás nove horas, n’uma / casa da rua Direita, freguesia de São Domingos / de Favaios, Arciprestado de Alijó, Diocese de / Villa Real, falleceu Maria Alice, <Idade class="1 ano">de um anno de / edade,</Idade> <Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente n’esta freguesia</Residencia></Naturalidade>, filha / legitima de Humberto da Rocha Lobo e de / Maria Teixeira Sampaio. Foi sepultada catholicamente / no cemiterio d’esta freguesia / aos 17 do mez e anno corrente.
+
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+
+    <registo id="40">40 
+        <nome>Carlos</nome><apelido>Alberto</apelido>
+
+        <ano class="1926">  No dia dezeseis do mez de dezembro do anno / de mil nove centos e vinte e seis</ano>, ás dez horas, n’uma casa do Largo da Praça, freguezia de / São Domingos de Favaios, Arciprestado de / Alijó, Diocese de Villa Real, falleceu Carlos / Alberto, <Idade class="4 meses">de quatro meses d’edade</Idade>, <Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente / n’esta freguesia</Residencia></Naturalidade>, filho legitimo de Jose da / Silva Azevedo e de Augusta de Jesus Passaro. Foi sepultado catholicamente no cemiterio d’esta / freguesia aos dezesete dias do mez e anno corrente.
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+    <registo id="41">41 
+        <nome>João</nome><apelido>Igrejas</apelido>
+
+        <ano class="1926">  No dia vinte e sete do mez de dezembro do anno de / mil nove centos e vinte e sete</ano>, ás cinco horas, n'uma / casa do logar da Rua do Fundo, freguezia de / São Domingos de Favaios, Arciprestado de Alijó, Diocese / de Villa Real, falleceu Joao Igrejas, <Idade class="1 dia">de um dia / d’edade</Idade>, <Naturalidade class="Favaios"><Residencia class="Favaios">natural e residente n’esta freguesia</Residencia></Naturalidade>, filho / illegitimo de Deolinda Igrejas. Foi sepultado catholicamente / no cemiterio d’esta freguesia aos / vinte e oito dias do mez e anno corrente.
+
+        <assinatura>O Parocho Alberto Fernandes Capella</assinatura>
+        </registo>
+</pagina>
